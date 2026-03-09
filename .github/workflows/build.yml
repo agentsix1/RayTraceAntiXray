@@ -18,14 +18,19 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
-          cache: maven
 
-      - name: Build with Maven
-        run: ./mvnw -B package
+      - name: Make compile.sh executable
+        run: chmod +x compile.sh
+
+      - name: Build plugin
+        run: ./compile.sh
+
+      - name: List files for debugging
+        run: ls -l
 
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
           name: RayTraceAntiXray
-          path: target/*.jar
-          if-no-files-found: error   # fail if nothing found
+          path: RayTraceAntiXray.jar
+          if-no-files-found: error

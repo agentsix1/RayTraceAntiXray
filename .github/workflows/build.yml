@@ -28,3 +28,4 @@ jobs:
         with:
           name: RayTraceAntiXray
           path: target/*.jar
+          if-no-files-found: error   # fail if nothing found
